@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>סבבה – תפריט יומי</title>
+  <meta name="description" content="תפריט יומי מסעדת סבבה">
+  <meta name="theme-color" content="#1C1A16">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="סבבה">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Заставка при загрузке -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-logo">ס</div>
+    <div class="splash-name" data-bind="restaurantName">מסעדת סבבה</div>
+  </div>
+
+  <div class="banner banner-offline" id="offlineBanner" hidden>⚠ אין חיבור לאינטרנט</div>
+
+  <div class="banner banner-install" id="installBanner" hidden>
+    <span class="install-icon">📲</span>
+    <span class="install-text"><b>הוסף לדף הבית</b><small>גישה מהירה כמו אפליקציה</small></span>
+    <button class="btn btn-gold btn-sm" id="installBtn" type="button">התקן</button>
+    <button class="icon-btn" id="installClose" type="button" aria-label="סגור">✕</button>
+  </div>
+
+  <header class="topbar">
+    <div class="brand"><span data-bind="brand">סבבה</span> <span class="spark">✦</span></div>
+    <button class="btn btn-ghost btn-sm" id="adminBtn" type="button">⚙ ניהול</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-media" id="heroMedia"><img id="heroImg" alt="" hidden></div>
+      <div class="hero-body">
+        <p class="hero-tag" data-bind="tag">תפריט יומי טרי</p>
+        <h1 class="hero-title" id="heroTitle">מסעדת <em>סבבה</em></h1>
+        <div class="hero-date">
+          <span data-bind="day">יום ה׳</span>
+          <span class="dot">•</span>
+          <span data-bind="date">28.09.2026</span>
+        </div>
+        <p class="hero-tagline" data-bind="tagline">מטבח ים תיכוני ביתי • טרי בכל יום</p>
+      </div>
+    </section>
+
+    <div id="menu" class="menu" aria-live="polite"></div>
+
+    <footer class="footer">
+      <p data-bind="note">כל המנות כשרות למהדרין.</p>
+      <p class="legend">ⓥ = טבעוני <span>|</span> 🌶 = חריף <span>|</span> GF = ללא גלוטן</p>
+      <p class="updated" id="updatedAt"></p>
+    </footer>
+  </main>
+
+  <!-- Вход в админку -->
+  <dialog id="loginDialog" class="dialog">
+    <form method="dialog" id="loginForm" class="login">
+      <h2>כניסת מנהל</h2>
+      <label>סיסמה
+        <input type="password" id="loginPassword" autocomplete="current-password" required>
+      </label>
+      <p class="error" id="loginError" hidden></p>
+      <div class="row">
+        <button class="btn btn-gold" type="submit" id="loginSubmit">כניסה</button>
+        <button class="btn btn-ghost" type="button" id="loginCancel">ביטול</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Панель редактирования -->
+  <aside class="admin" id="admin" hidden aria-label="ניהול תפריט">
+    <div class="admin-head">
+      <h2>ניהול תפריט</h2>
+      <div class="admin-actions">
+        <span class="status" id="saveStatus"></span>
+        <button class="btn btn-gold" id="saveBtn" type="button">💾 שמור</button>
+        <button class="icon-btn" id="adminClose" type="button" aria-label="סגור">✕</button>
+      </div>
+    </div>
+    <div class="admin-body" id="adminBody"></div>
+    <div class="admin-foot">
+      <button class="btn btn-ghost btn-sm" id="logoutBtn" type="button">יציאה</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

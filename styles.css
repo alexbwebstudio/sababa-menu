@@ -93,7 +93,7 @@ main { max-width: 760px; margin: 0 auto; }
 .hero-media { position: relative; max-width: 420px; margin: 20px auto 0; padding: 0 16px; }
 .hero-media img { width: 100%; height: auto; border-radius: 14px; }
 .hero-body { position: relative; padding: 36px 20px 28px; text-align: center; }
-.hero-media:has(img:not([hidden])) + .hero-body { padding-top: 16px; }
+.hero-media:has(img:not([hidden])) + .hero-body { padding-top: 20px; }
 .hero-tag {
   display: inline-block; margin: 0 0 10px; padding: 4px 14px; border-radius: 999px;
   border: 1px solid rgba(212,162,76,.5); color: var(--gold-2); font-size: 14px; letter-spacing: .02em;
